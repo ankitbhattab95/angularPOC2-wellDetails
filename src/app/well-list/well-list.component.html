@@ -1,0 +1,22 @@
+
+<app-well *ngIf="clickedSource !== undefined" (reset)= "resetSource($event)" [clickedSourceId]="clickedSource"></app-well>
+
+<div id="table" >
+    <h2>Well Details</h2>
+            <table class="table table-bordered" >
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Type</th>     
+                    <th scope="col">Source</th>     
+                  </tr>
+                </thead>
+                <tbody *ngFor="let wellDetail of wellDetails">
+                  <tr>
+                    <td> {{wellDetail.name}}</td>
+                    <td [ngClass]="{'demo':wellDetail.type === 'rls',
+                                    'demo2':wellDetail.type === 'esp'}" > {{wellDetail.type}}</td>
+                    <td id="source" (click)="sourceClicked($event)"> {{wellDetail.source}}</td>
+                </tbody>
+        </table>
+ </div>  
